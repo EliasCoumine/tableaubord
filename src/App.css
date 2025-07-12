@@ -1,38 +1,455 @@
-.App {
-  text-align: center;
+/* UCL Blue Modern Dashboard Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #0a174e 0%, #19398a 60%, #2e5cb8 100%);
   min-height: 100vh;
+  color: #f3f4f6;
+  line-height: 1.6;
+}
+
+.App {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.dashboard-header {
+  background: rgba(10, 23, 78, 0.98);
+  border-bottom: 1px solid #1a2a6c;
+  padding: 2rem 0 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(10, 23, 78, 0.2);
+}
+
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.title-section h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #b3c7f7;
+  font-weight: 500;
+}
+
+.controls-section {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #b3c7f7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modern-select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #1a2a6c;
+  border-radius: 12px;
+  background: #19398a;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #f3f4f6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.modern-select:focus {
+  outline: none;
+  border-color: #b3c7f7;
+  box-shadow: 0 0 0 3px rgba(179,199,247,0.15);
+}
+
+.modern-select:hover {
+  border-color: #2e5cb8;
+}
+
+.dashboard-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem 1rem;
+}
+
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stat-card {
+  background: linear-gradient(120deg, #19398a 60%, #2e5cb8 100%);
+  border-radius: 18px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 24px rgba(10, 23, 78, 0.18);
+  border: 1px solid #1a2a6c;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #2e5cb8;
+}
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0.5rem;
+  border-radius: 12px;
+  background: rgba(10, 23, 78, 0.7);
+  transition: background 0.2s;
+}
+
+.stat-row:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+
+.stat-row:hover {
+  background: #2e5cb8;
+}
+
+.stat-player {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2e5cb8;
+  background: #19398a;
+}
+
+.stat-team-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-left: 0.5rem;
+  background: #19398a;
+}
+
+.stat-badge {
+  min-width: 38px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: #2e5cb8;
+  color: #fff;
+  margin-left: 0.7rem;
+}
+
+.stat-badge.green {
+  background: #22c55e;
+  color: #fff;
+}
+
+.stat-badge.red {
+  background: #ef4444;
+  color: #fff;
+}
+
+.stat-badge.blue {
+  background: #2563eb;
+  color: #fff;
+}
+
+.loading-container,
+.error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a174e 0%, #19398a 60%, #2e5cb8 100%);
 }
 
-.App-link {
-  color: #61dafb;
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #1a2a6c;
+  border-top: 4px solid #b3c7f7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  font-size: 1.1rem;
+  color: #b3c7f7;
+  font-weight: 500;
+}
+
+.error-container {
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  font-size: 1.1rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+/* UCL Card Layout Styles */
+.ucl-section-title {
+  font-size: 1.6rem;
+  color: #0a174e;
+  font-weight: 800;
+  margin: 2.5rem 0 1.2rem 0;
+  letter-spacing: 0.01em;
+}
+
+.ucl-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.ucl-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 6px 32px rgba(10, 23, 78, 0.10);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ucl-card-header {
+  background: linear-gradient(90deg, #0a174e 60%, #19398a 100%);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  letter-spacing: 0.01em;
+}
+
+.ucl-card-body {
+  padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.ucl-card-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.ucl-card-row:hover {
+  background: #f3f6fa;
+}
+
+.ucl-card-rank {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #19398a;
+  width: 1.5rem;
+  text-align: right;
+}
+
+.ucl-card-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #f3f6fa;
+  border: 1.5px solid #e5e7eb;
+}
+
+.ucl-card-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f3f6fa;
+  border: 1.5px solid #e5e7eb;
+}
+
+.ucl-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ucl-card-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0a174e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ucl-card-sub {
+  font-size: 0.92rem;
+  color: #6b7280;
+  font-weight: 400;
+  margin-top: -2px;
+}
+
+.ucl-card-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #19398a;
+  margin-left: 0.7rem;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+.ucl-card-more {
+  color: #19398a;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+  cursor: pointer;
+  text-align: right;
+  transition: color 0.2s;
+}
+.ucl-card-more:hover {
+  color: #0a174e;
+  text-decoration: underline;
+}
+
+.ucl-card.wide {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+}
+
+.ucl-tots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  background: #f3f6fa;
+  border-radius: 0 0 22px 22px;
+}
+
+.ucl-tots-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(10, 23, 78, 0.07);
+  padding: 1rem 0.5rem;
+}
+
+.ucl-tots-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #19398a;
+  background: #f3f6fa;
+}
+
+.ucl-tots-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0a174e;
+  margin-bottom: 0.2rem;
+}
+
+.ucl-tots-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #f3f6fa;
+  border: 1.5px solid #e5e7eb;
+}
+
+.ucl-tots-rating {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #22c55e;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .header-content, .dashboard-content {
+    padding: 0 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .stat-card {
+    padding: 1rem 0.5rem;
+  }
+  .title-section h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .ucl-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .ucl-tots-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 }
