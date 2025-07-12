@@ -84,4 +84,56 @@ export const teamOfTheSeason = {
   ],
   2024: [ /* ...similar mock data for 2023/24... */ ],
   2023: [ /* ...similar mock data for 2022/23... */ ],
+};
+
+export const customStats2025 = {
+  playerStats: {
+    topScorers: [
+      { name: 'Raphinha', club: 'Barcelona', value: 13, avatar: '', logo: '' },
+      { name: 'Serhou Guirassy', club: 'Borussia Dortmund', value: 13, avatar: '', logo: '' },
+      { name: 'Robert Lewandowski', club: 'Barcelona', value: 11, avatar: '', logo: '' },
+    ],
+    topAssists: [
+      { name: 'Raphinha', club: 'Barcelona', value: 8, avatar: '', logo: '' },
+      { name: 'Ousmane Dembélé', club: 'Paris Saint-Germain', value: 6, avatar: '', logo: '' },
+      { name: 'Davide Zappacosta', club: 'Atalanta', value: 5, avatar: '', logo: '' },
+    ],
+    goalsPlusAssists: [
+      { name: 'Raphinha', club: 'Barcelona', value: 21, avatar: '', logo: '' },
+      { name: 'Serhou Guirassy', club: 'Borussia Dortmund', value: 17, avatar: '', logo: '' },
+      { name: 'Ousmane Dembélé', club: 'Paris Saint-Germain', value: 14, avatar: '', logo: '' },
+    ],
+    ratings: [
+      { name: 'Raphinha', club: 'Barcelona', value: 8.31, avatar: '', logo: '' },
+      { name: 'Lamine Yamal', club: 'Barcelona', value: 7.92, avatar: '', logo: '' },
+      { name: 'Ousmane Dembélé', club: 'Paris Saint-Germain', value: 7.89, avatar: '', logo: '' },
+    ],
+  },
+  teamStats: {
+    ratings: [
+      { name: 'Paris Saint-Germain', value: 7.29, logo: '' },
+      { name: 'Real Madrid', value: 7.13, logo: '' },
+      { name: 'Liverpool', value: 7.13, logo: '' },
+    ],
+    goalsPerMatch: [
+      { name: 'Barcelona', value: 3.1, logo: '' },
+      { name: 'Paris Saint-Germain', value: 2.2, logo: '' },
+      { name: 'Arsenal', value: 2.2, logo: '' },
+    ],
+    goalsConcededPerMatch: [
+      { name: 'Liverpool', value: 0.6, logo: '' },
+      { name: 'Arsenal', value: 0.7, logo: '' },
+      { name: 'Paris Saint-Germain', value: 0.9, logo: '' },
+    ],
+    averagePossession: [
+      { name: 'Bayern München', value: 64.8, logo: '' },
+      { name: 'Manchester City', value: 63.8, logo: '' },
+      { name: 'Barcelona', value: 61.9, logo: '' },
+    ],
+    cleanSheets: [
+      { name: 'Inter', value: 8, logo: '' },
+      { name: 'Paris Saint-Germain', value: 7, logo: '' },
+      { name: 'Liverpool', value: 6, logo: '' },
+    ],
+  },
 }; 
