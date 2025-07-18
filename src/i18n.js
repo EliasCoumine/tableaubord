@@ -32,7 +32,7 @@ const resources = {
       loading: 'Chargement des données UCL...',
       error: 'Échec du chargement',
       goals: 'Buts',
-      assists: 'Passes',
+      assists: 'Passes decisives',
       goalsFor: 'Buts Marqués',
       goalsAgainst: 'Buts Encaissés',
     },
