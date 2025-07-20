@@ -157,8 +157,8 @@ body {
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #2e5cb8;
@@ -166,8 +166,8 @@ body {
 }
 
 .stat-team-logo {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: contain;
   margin-left: 0.5rem;
@@ -313,8 +313,8 @@ body {
 }
 
 .ucl-card-logo {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: contain;
   background: #f3f6fa;
@@ -322,8 +322,8 @@ body {
 }
 
 .ucl-card-avatar {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
   background: #f3f6fa;
@@ -402,8 +402,8 @@ body {
 }
 
 .ucl-tots-avatar {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #19398a;
@@ -418,8 +418,8 @@ body {
 }
 
 .ucl-tots-logo {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: contain;
   background: #f3f6fa;
@@ -432,6 +432,50 @@ body {
   color: #22c55e;
   margin-top: 0.2rem;
 }
+
+/* Navigation Styles */
+.dashboard-nav {
+  border-top: 1px solid #1a2a6c;
+  padding: 1rem 0 0 0;
+  margin-top: 1rem;
+}
+
+.nav-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #1a2a6c;
+  border-radius: 12px;
+  background: #19398a;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #b3c7f7;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-button:hover {
+  border-color: #2e5cb8;
+  background: #2e5cb8;
+  color: #fff;
+}
+
+.nav-button.active {
+  border-color: #b3c7f7;
+  background: #b3c7f7;
+  color: #0a174e;
+  font-weight: 700;
+}
+
+/* Chart Styles */
 
 @media (max-width: 600px) {
   .header-content, .dashboard-content {
@@ -452,4 +496,8 @@ body {
   .ucl-tots-grid {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
+  
+
+  /* Recharts dark tooltip */
+
 }

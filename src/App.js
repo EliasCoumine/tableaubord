@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './i18n';
 import { useTranslation } from 'react-i18next';
-import { seasons, customStats2025, teamOfTheSeason } from './data';
+import { seasons, customStats2025, teamOfTheSeason, customStats2024, customStats2023 } from './data';
+import PlayerAnalytics from './PlayerAnalytics';
 
 function StatCard({ title, items, type }) {
   return (
@@ -55,21 +56,36 @@ function TeamOfTheSeason({ players }) {
 function App() {
   const { t, i18n } = useTranslation();
   const [season, setSeason] = useState(2025);
+  const [currentPage, setCurrentPage] = useState('dashboard'); // 'dashboard' or 'analytics'
 
-  const {
-    playerStats,
-    teamStats
-  } = customStats2025;
+  const getCurrentStats = () => {
+    switch(season) {
+      case 2025:
+        return customStats2025;
+      case 2024:
+        return customStats2024;
+      case 2023:
+        return customStats2023;
+      default:
+        return customStats2025;
+    }
+  };
 
+  const currentStats = getCurrentStats();
   const tots = teamOfTheSeason[season];
+
+  // If we're on the analytics page, render that component
+  if (currentPage === 'analytics') {
+    return <PlayerAnalytics onBack={() => setCurrentPage('dashboard')} />;
+  }
 
   return (
     <div className="App">
       <header className="dashboard-header">
         <div className="header-content">
           <div className="title-section">
-            <h1>UEFA Champions League</h1>
-            <p className="subtitle">All-time stats & rankings</p>
+            <h1>{t('title')}</h1>
+            <p className="subtitle">{t('description')}</p>
           </div>
           <div className="controls-section">
             <div className="control-group">
@@ -99,30 +115,54 @@ function App() {
             </div>
           </div>
         </div>
+        
+        {/* Navigation */}
+        <nav className="dashboard-nav">
+          <div className="nav-content">
+            <button 
+              className={`nav-button ${currentPage === 'dashboard' ? 'active' : ''}`}
+              onClick={() => setCurrentPage('dashboard')}
+            >
+              {t('dashboard')}
+            </button>
+            <button 
+              className={`nav-button ${currentPage === 'analytics' ? 'active' : ''}`}
+              onClick={() => setCurrentPage('analytics')}
+            >
+              {t('playerAnalytics')}
+            </button>
+          </div>
+        </nav>
       </header>
 
       <main className="dashboard-content">
         {/* Team Stats */}
-        <h2 className="ucl-section-title">Team stats</h2>
+        <h2 className="ucl-section-title">{t('teamStats')}</h2>
         <div className="ucl-card-grid">
-          <StatCard title="Team Rating" items={teamStats.ratings} type="club" />
-          <StatCard title="Goals" items={teamStats.goalsPerMatch} type="club" />
-          <StatCard title="Goals Conceded" items={teamStats.goalsConcededPerMatch} type="club" />
-          <StatCard title="Average Possession" items={teamStats.averagePossession} type="club" />
-          <StatCard title="Clean Sheets" items={teamStats.cleanSheets} type="club" />
+          {currentStats.teamStats ? (
+            <>
+              <StatCard title={t('teamRating')} items={currentStats.teamStats.ratings} type="club" />
+              <StatCard title={t('goals')} items={currentStats.teamStats.goalsPerMatch} type="club" />
+              <StatCard title={t('goalsConceded')} items={currentStats.teamStats.goalsConcededPerMatch} type="club" />
+              <StatCard title={t('averagePossession')} items={currentStats.teamStats.averagePossession} type="club" />
+              <StatCard title={t('cleanSheets')} items={currentStats.teamStats.cleanSheets} type="club" />
+            </>
+          ) : (
+            <StatCard title={t('teamStats')} items={[]} type="club" />
+          )}
         </div>
 
         {/* Player Stats */}
-        <h2 className="ucl-section-title">Player stats</h2>
+        <h2 className="ucl-section-title">{t('playerStats')}</h2>
         <div className="ucl-card-grid">
-          <StatCard title="Top Goalscorers" items={playerStats.topScorers} type="player" />
-          <StatCard title="Top Assisters" items={playerStats.topAssists} type="player" />
-          <StatCard title="Goals + Assists" items={playerStats.goalsPlusAssists} type="player" />
-          <StatCard title="Player Rating" items={playerStats.ratings} type="player" />
+          <StatCard title={t('topScorers')} items={currentStats.playerStats?.topScorers || currentStats.topScorers} type="player" />
+          <StatCard title={t('topAssists')} items={currentStats.playerStats?.topAssists || currentStats.topAssists} type="player" />
+          <StatCard title={t('goalsPlusAssists')} items={currentStats.playerStats?.goalsPlusAssists || currentStats.goalsPlusAssists} type="player" />
+          <StatCard title={t('playerRating')} items={currentStats.playerStats?.playerRatings || []} type="player" />
         </div>
 
         {/* Team of the Season */}
-        <h2 className="ucl-section-title">Team of the Season</h2>
+        <h2 className="ucl-section-title">{t('teamOfTheSeason')}</h2>
         <TeamOfTheSeason players={tots} />
       </main>
     </div>

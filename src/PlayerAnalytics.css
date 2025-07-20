@@ -1,0 +1,330 @@
+/* Player Analytics Page Styles */
+.player-analytics {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a174e 0%, #19398a 60%, #2e5cb8 100%);
+  color: #f3f4f6;
+}
+
+.analytics-header {
+  background: rgba(10, 23, 78, 0.98);
+  border-bottom: 1px solid #1a2a6c;
+  padding: 2rem 0 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(10, 23, 78, 0.2);
+}
+
+/* ---------- overall page ---------- */
+.player-analytics {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a174e 0%, #19398a 60%, #2e5cb8 100%);
+  color: #f3f4f6;
+}
+
+/* (all your existing header / layout styles stay the same) */
+/* ………………………………… your long CSS remains ………………………………… */
+
+/* ---------- Custom dark tooltip (must be top-level, not inside @media) ---------- */
+.recharts-tooltip-dark {
+  background: #19398a;
+  border: 1px solid #2e5cb8;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #f3f4f6;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.recharts-tooltip-cursor {
+  fill: rgba(255, 255, 255, 0.05);
+}
+
+/* ---------- Legend colour chips ---------- */
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+.legend-color.green  { background: #22c55e; }
+.legend-color.blue   { background: #3b82f6; }
+.legend-color.orange { background: #f59e0b; }
+.legend-color.red    { background: #ef4444; }
+
+/* … your responsive @media queries follow … */
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.title-section h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #b3c7f7;
+  font-weight: 500;
+}
+
+.controls-section {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #b3c7f7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modern-select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #1a2a6c;
+  border-radius: 12px;
+  background: #19398a;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #f3f4f6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.modern-select:focus {
+  outline: none;
+  border-color: #b3c7f7;
+  box-shadow: 0 0 0 3px rgba(179,199,247,0.15);
+}
+
+.modern-select:hover {
+  border-color: #2e5cb8;
+}
+
+.back-button {
+  padding: 0.75rem 1rem;
+  border: 2px solid #1a2a6c;
+  border-radius: 12px;
+  background: #19398a;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #b3c7f7;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 1rem;
+}
+
+.back-button:hover {
+  border-color: #2e5cb8;
+  background: #2e5cb8;
+  color: #fff;
+}
+
+.analytics-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem 1rem;
+}
+
+.chart-container {
+  background: linear-gradient(120deg, #19398a 60%, #2e5cb8 100%);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 4px 24px rgba(10, 23, 78, 0.18);
+  border: 1px solid #1a2a6c;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chart-container.large {
+  min-height: 600px;
+}
+
+.chart-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(10, 23, 78, 0.25);
+}
+
+.chart-header {
+  margin-bottom: 2rem;
+}
+
+.chart-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.chart-description {
+  color: #b3c7f7;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(10, 23, 78, 0.7);
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #f3f4f6;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.legend-color.green {
+  background: #22c55e;
+}
+
+.legend-color.blue {
+  background: #3b82f6;
+}
+
+.legend-color.orange {
+  background: #f59e0b;
+}
+
+.legend-color.red {
+  background: #ef4444;
+}
+
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.summary-card {
+  background: linear-gradient(120deg, #19398a 60%, #2e5cb8 100%);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(10, 23, 78, 0.18);
+  border: 1px solid #1a2a6c;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(10, 23, 78, 0.25);
+}
+
+.summary-card h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #2e5cb8;
+}
+
+.summary-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.summary-card li {
+  color: #b3c7f7;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.summary-card li:before {
+  content: "•";
+  color: #2e5cb8;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .title-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .controls-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .chart-container {
+    padding: 1rem;
+  }
+  
+  .chart-legend {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .stats-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .analytics-content {
+    padding: 1rem 0.5rem 2rem 0.5rem;
+  }
+  
+  .chart-container {
+    padding: 0.75rem;
+  }
+  
+  .chart-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .legend-item {
+    font-size: 0.8rem;
+  }
+
+
+} 
