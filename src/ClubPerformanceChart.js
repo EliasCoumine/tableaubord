@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { customStats2024, customStats2025 } from './data';
 
 function ClubPerformanceChart({ season }) {
@@ -63,8 +63,6 @@ function ClubPerformanceChart({ season }) {
 
   // Calculate summary stats
   const totalClubs = chartData.length;
-  const avgGoals = (chartData.reduce((s, c) => s + c.goals, 0) / totalClubs).toFixed(1);
-  const avgConceded = (chartData.reduce((s, c) => s + c.conceded, 0) / totalClubs).toFixed(1);
   const highestScoring = chartData.sort((a, b) => b.goals - a.goals)[0]?.club || '';
   const leastConceded = chartData.sort((a, b) => a.conceded - b.conceded)[0]?.club || '';
   const bestRatioClub = chartData
