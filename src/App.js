@@ -139,7 +139,7 @@ function App() {
 
   // If we're on the analytics page, render that component
   if (currentPage === 'analytics') {
-    return <PlayerAnalytics onBack={() => setCurrentPage('dashboard')} />;
+    return <PlayerAnalytics onBack={() => setCurrentPage('dashboard')} season={season} setSeason={setSeason} />;
   }
 
   return (

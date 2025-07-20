@@ -193,6 +193,7 @@ export const customStats2024 = {
       { name: 'Real Madrid', value: 15, logo: '/icons/club/Real Madrid.png' },
       { name: 'Salzburg', value: 8, logo: '/icons/club/Red Bull Salzburg.png' },
       { name: 'AC Milan', value: 8, logo: '/icons/club/AC Milan.png' },
+      { name: 'Manchester City', value: 13, logo: '/icons/club/Manchester City.png' },
     ],
     averagePossession: [
       { name: 'Manchester City', value: 70.0, logo: '/icons/club/Manchester City.png' },

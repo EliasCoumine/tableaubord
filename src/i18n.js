@@ -48,9 +48,11 @@ const resources = {
 
       /* ───────── axis labels – NEW ───────── */
       goalsAssistsVsRating: 'Goals + Assists vs Player Rating',
+      club: 'Club',
+      goalsVsConceded: 'Goals Scored / Conceded',
 
       /* ───────── analytics page ───────── */
-      playerAnalytics: 'Player Analytics',
+      playerAnalytics: 'Analytics',
       performanceCorrelation: 'Performance Correlation Analysis',
       scatterDescription:
         'This scatter plot shows the correlation between player performance (Goals + Assists) and their rating. Each point represents a player, with colour coding indicating performance levels.',
@@ -70,6 +72,18 @@ const resources = {
       avgGoalsPlusAssists:    'Average Goals + Assists',
       avgRating:              'Average Rating',
       topPerformer:           'Top Performer',
+      clubPerformance: 'Club Performance (Top 4 by Rating)',
+      clubPerformanceDescription: 'Comparison of goals scored and goals conceded for the top 4 rated clubs in each season.',
+      clubInsight1: 'Top rated clubs tend to score more goals than they concede.',
+      clubInsight2: 'There is a visible gap between offensive and defensive strengths among the top clubs.',
+      clubInsight3: 'The club with the highest goals scored is often among the best rated.',
+      totalClubs: 'Total Clubs',
+      avgConceded: 'Average Goals Conceded',
+      topScoringClub: 'Top Scoring Club',
+      clubInsightBestRatio: 'The team with the best goals scored/conceded ratio is usually highly rated.',
+      highestScoring: 'Highest Scoring Club',
+      leastConceded: 'Least Conceded Club',
+      bestRatioClub: 'Best Goal/Conceding Ratio',
     },
   },
 
@@ -118,9 +132,11 @@ const resources = {
 
       /* ───────── étiquettes d'axes – NOUVEAU ───────── */
       goalsAssistsVsRating: 'Buts + Passes vs Note des Joueurs',
+      club: 'Club',
+      goalsVsConceded: 'Buts marqués / encaissés',
 
       /* ───────── page analytique ───────── */
-      playerAnalytics:        'Analyse des joueurs',
+      playerAnalytics: 'Analytique',
       performanceCorrelation: 'Analyse de corrélation des performances',
       scatterDescription:
         'Ce nuage de points montre la corrélation entre la performance d\'un joueur (Buts + Passes) et sa note. Chaque point représente un joueur, avec un code couleur selon le niveau de performance.',
@@ -140,6 +156,18 @@ const resources = {
       avgGoalsPlusAssists:    'Moyenne Buts + Passes',
       avgRating:              'Note moyenne',
       topPerformer:           'Meilleur joueur',
+      clubPerformance: 'Performance des clubs (Top 4 par note)',
+      clubPerformanceDescription: 'Comparaison des buts marqués et des buts encaissés pour les 4 clubs les mieux notés de chaque saison.',
+      clubInsight1: 'Les clubs les mieux notés marquent généralement plus de buts qu’ils n’en encaissent.',
+      clubInsight2: 'Il existe un écart visible entre la force offensive et défensive des meilleurs clubs.',
+      clubInsight3: 'Le club ayant marqué le plus de buts est souvent parmi les mieux notés.',
+      totalClubs: 'Nombre total de clubs',
+      avgConceded: 'Moyenne de buts encaissés',
+      topScoringClub: 'Club le plus prolifique',
+      clubInsightBestRatio: 'L’équipe avec le meilleur ratio buts marqués/encaissés est généralement très bien notée.',
+      highestScoring: 'Club le plus prolifique',
+      leastConceded: 'Club le moins perméable',
+      bestRatioClub: 'Meilleur ratio buts marqués/encaissés',
     },
   },
 };

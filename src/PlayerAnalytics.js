@@ -14,10 +14,10 @@ import {
 
 import { playerDatabase } from './data';      // unified player DB
 import './PlayerAnalytics.css';               // page-specific styles
+import ClubPerformanceChart from './ClubPerformanceChart';
 
-function PlayerAnalytics({ onBack }) {
+function PlayerAnalytics({ onBack, season, setSeason }) {
   const { t, i18n } = useTranslation();
-  const [season, setSeason] = useState(2025);
 
   /* ───────────── map DB → chart points ───────────── */
   const scatterData = (playerDatabase[season] || []).map((p) => ({
@@ -95,7 +95,6 @@ function PlayerAnalytics({ onBack }) {
               >
                 <option value={2025}>2024/2025</option>
                 <option value={2024}>2023/2024</option>
-                <option value={2023}>2022/2023</option>
               </select>
             </div>
           </div>
@@ -118,18 +117,18 @@ function PlayerAnalytics({ onBack }) {
                 type="number" 
                 dataKey="goalsPlusAssists" 
                 name={t('goalsPlusAssists')}
-                stroke="#b3c7f7" 
+                stroke="#fff"
                 fontSize={12}
-                label={{ value: t('goalsPlusAssists'), position: 'bottom', offset: 0 }}
+                label={{ value: t('goalsPlusAssists'), position: 'bottom', offset: 0, fill: '#fff' }}
                 domain={[0, 'dataMax + 2']}
               />
               <YAxis 
                 type="number" 
                 dataKey="rating" 
                 name={t('playerRating')}
-                stroke="#b3c7f7" 
+                stroke="#fff"
                 fontSize={12}
-                label={{ value: t('playerRating'), angle: -90, position: 'left' }}
+                label={{ value: t('playerRating'), angle: -90, position: 'left', fill: '#fff' }}
                 domain={[6.5, 8.5]}
               />
 
@@ -164,7 +163,7 @@ function PlayerAnalytics({ onBack }) {
         </div>
 
         {/* -------- insight + summary (unchanged) -------- */}
-        <div className="stats-summary">
+        <div className="stats-summary" style={{ marginBottom: '2.5rem' }}>
           <div className="summary-card">
             <h4>{t('correlationInsights')}</h4>
             <ul>
@@ -210,6 +209,11 @@ function PlayerAnalytics({ onBack }) {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* -------- club performance bar chart -------- */}
+        <div className="chart-container large">
+          <ClubPerformanceChart season={season} />
         </div>
       </main>
     </div>

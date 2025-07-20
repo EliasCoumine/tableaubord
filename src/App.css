@@ -18,14 +18,11 @@ body {
   padding: 0;
 }
 
-.dashboard-header {
-  background: rgba(10, 23, 78, 0.98);
-  border-bottom: 1px solid #1a2a6c;
-  padding: 2rem 0 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 20px rgba(10, 23, 78, 0.2);
+.dashboard-header,
+.analytics-header {
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .header-content {
@@ -250,7 +247,7 @@ body {
 /* UCL Card Layout Styles */
 .ucl-section-title {
   font-size: 1.6rem;
-  color: #0a174e;
+  color: #fff;
   font-weight: 800;
   margin: 2.5rem 0 1.2rem 0;
   letter-spacing: 0.01em;
