@@ -105,6 +105,11 @@ function PlayerAnalytics({ onBack }) {
       {/* -------- scatter plot -------- */}
       <main className="analytics-content">
         <div className="chart-container large">
+          <div className="chart-header">
+            <h3>{t('goalsAssistsVsRating')}</h3>
+            <p className="chart-description">{t('scatterDescription')}</p>
+          </div>
+          
           <ResponsiveContainer width="100%" height={520}>
             <ScatterChart margin={{ top: 20, right: 30, left: 10, bottom: 20 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#1a2a6c" />

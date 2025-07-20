@@ -36,6 +36,16 @@ const resources = {
       /* ───────── team of the season ───────── */
       teamOfTheSeason: 'Team of the Season',
 
+      /* ───────── knockout bracket ───────── */
+      knockoutBracket: 'Knockout Bracket',
+      championsLeague: 'Champions League',
+      knockoutStage: 'Knockout Stage',
+      roundOf16: 'Round of 16',
+      quarterFinals: 'Quarter Finals',
+      semiFinals: 'Semi Finals',
+      final: 'Final',
+      champion: 'CHAMPION',
+
       /* ───────── axis labels – NEW ───────── */
       goalsAssistsVsRating: 'Goals + Assists vs Player Rating',
 
@@ -95,6 +105,16 @@ const resources = {
 
       /* ───────── équipe de la saison ───────── */
       teamOfTheSeason: 'Équipe de la saison',
+
+      /* ───────── tableau de qualification ───────── */
+      knockoutBracket: 'Tableau de qualification',
+      championsLeague: 'Ligue des champions',
+      knockoutStage: 'Phase à élimination',
+      roundOf16: 'Phase de 16',
+      quarterFinals: 'Quarts de finale',
+      semiFinals: 'Demi-finales',
+      final: 'Finale',
+      champion: 'CHAMPION',
 
       /* ───────── étiquettes d'axes – NOUVEAU ───────── */
       goalsAssistsVsRating: 'Buts + Passes vs Note des Joueurs',

@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import './App.css';
 import './i18n';
 import { useTranslation } from 'react-i18next';
-import { seasons, customStats2025, teamOfTheSeason, customStats2024, customStats2023 } from './data';
+import { seasons, customStats2025, teamOfTheSeason, customStats2024, playerDatabase } from './data';
 import PlayerAnalytics from './PlayerAnalytics';
 
-function StatCard({ title, items, type }) {
+function StatCard({ title, items, type, showAll, toggleShowAll }) {
+  const displayCount = showAll ? 10 : 3;
+  const hasMore = items && items.length > 3;
+  const shownItems = items ? items.slice(0, displayCount) : [];
+
   return (
     <div className="ucl-card">
       <div className="ucl-card-header">{title}</div>
       <div className="ucl-card-body">
-        {items && items.length > 0 ? (
-          items.map((item, idx) => (
+        {shownItems && shownItems.length > 0 ? (
+          shownItems.map((item, idx) => (
             <div className="ucl-card-row" key={idx}>
               <div className="ucl-card-rank">{idx + 1}</div>
               {type === 'club' && (
@@ -30,24 +34,78 @@ function StatCard({ title, items, type }) {
         ) : (
           <div style={{ textAlign: 'center', padding: '20px' }}>No data available</div>
         )}
+        {hasMore && (
+          <button className="show-more-btn" onClick={toggleShowAll}>
+            {showAll ? 'Show Less' : 'Show More'}
+          </button>
+        )}
       </div>
     </div>
   );
 }
 
 function TeamOfTheSeason({ players }) {
+  // Group players by position
+  const gk = players.filter(p => p.position === 'GK');
+  const defenders = players.filter(p => p.position?.startsWith('CB') || p.position?.startsWith('RB') || p.position?.startsWith('LB'));
+  const midfielders = players.filter(p => p.position === 'CM');
+  const forwards = players.filter(p => p.position?.startsWith('ST') || p.position?.startsWith('RW') || p.position?.startsWith('LW'));
+
   return (
     <div className="ucl-card wide">
       <div className="ucl-card-header">Team of the Season</div>
       <div className="ucl-tots-grid">
-        {players.map((p, idx) => (
-          <div className="ucl-tots-player" key={idx}>
-            <img className="ucl-tots-avatar" src={p.avatar} alt={p.name} />
-            <div className="ucl-tots-name">{p.name}</div>
-            <img className="ucl-tots-logo" src={p.logo} alt={p.club} />
-            <div className="ucl-tots-rating">{p.rating}</div>
-          </div>
-        ))}
+        {/* Forwards (top) */}
+        <div className="ucl-tots-row fwd">
+          {forwards.map((p, idx) => (
+            <div className="ucl-tots-player" key={idx}>
+              <div className="ucl-tots-position">{p.position}</div>
+              <img className="ucl-tots-avatar" src={p.avatar} alt={p.name} />
+              <div className="ucl-tots-name">{p.name}</div>
+              <img className="ucl-tots-logo" src={p.logo} alt={p.club} />
+              <div className="ucl-tots-rating">{p.rating}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Midfielders */}
+        <div className="ucl-tots-row mid">
+          {midfielders.map((p, idx) => (
+            <div className="ucl-tots-player" key={idx}>
+              <div className="ucl-tots-position">{p.position}</div>
+              <img className="ucl-tots-avatar" src={p.avatar} alt={p.name} />
+              <div className="ucl-tots-name">{p.name}</div>
+              <img className="ucl-tots-logo" src={p.logo} alt={p.club} />
+              <div className="ucl-tots-rating">{p.rating}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Defenders */}
+        <div className="ucl-tots-row def">
+          {defenders.map((p, idx) => (
+            <div className="ucl-tots-player" key={idx}>
+              <div className="ucl-tots-position">{p.position}</div>
+              <img className="ucl-tots-avatar" src={p.avatar} alt={p.name} />
+              <div className="ucl-tots-name">{p.name}</div>
+              <img className="ucl-tots-logo" src={p.logo} alt={p.club} />
+              <div className="ucl-tots-rating">{p.rating}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Goalkeeper (bottom) */}
+        <div className="ucl-tots-row gk">
+          {gk.map((p, idx) => (
+            <div className="ucl-tots-player" key={idx}>
+              <div className="ucl-tots-position">{p.position}</div>
+              <img className="ucl-tots-avatar" src={p.avatar} alt={p.name} />
+              <div className="ucl-tots-name">{p.name}</div>
+              <img className="ucl-tots-logo" src={p.logo} alt={p.club} />
+              <div className="ucl-tots-rating">{p.rating}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -57,6 +115,8 @@ function App() {
   const { t, i18n } = useTranslation();
   const [season, setSeason] = useState(2025);
   const [currentPage, setCurrentPage] = useState('dashboard'); // 'dashboard' or 'analytics'
+  // Track showAll state per StatCard by title
+  const [showAllMap, setShowAllMap] = useState({});
 
   const getCurrentStats = () => {
     switch(season) {
@@ -64,8 +124,6 @@ function App() {
         return customStats2025;
       case 2024:
         return customStats2024;
-      case 2023:
-        return customStats2023;
       default:
         return customStats2025;
     }
@@ -73,6 +131,11 @@ function App() {
 
   const currentStats = getCurrentStats();
   const tots = teamOfTheSeason[season];
+
+  // Helper to toggle showAll for a given card title
+  const handleToggleShowAll = (title) => {
+    setShowAllMap(prev => ({ ...prev, [title]: !prev[title] }));
+  };
 
   // If we're on the analytics page, render that component
   if (currentPage === 'analytics') {
@@ -141,24 +204,23 @@ function App() {
         <div className="ucl-card-grid">
           {currentStats.teamStats ? (
             <>
-              <StatCard title={t('teamRating')} items={currentStats.teamStats.ratings} type="club" />
-              <StatCard title={t('goals')} items={currentStats.teamStats.goalsPerMatch} type="club" />
-              <StatCard title={t('goalsConceded')} items={currentStats.teamStats.goalsConcededPerMatch} type="club" />
-              <StatCard title={t('averagePossession')} items={currentStats.teamStats.averagePossession} type="club" />
-              <StatCard title={t('cleanSheets')} items={currentStats.teamStats.cleanSheets} type="club" />
+              <StatCard title={t('teamRating')} items={currentStats.teamStats.ratings} type="club" showAll={!!showAllMap[t('teamRating')]} toggleShowAll={() => handleToggleShowAll(t('teamRating'))} />
+              <StatCard title={t('goals')} items={currentStats.teamStats.goalsPerMatch} type="club" showAll={!!showAllMap[t('goals')]} toggleShowAll={() => handleToggleShowAll(t('goals'))} />
+              <StatCard title={t('goalsConceded')} items={currentStats.teamStats.goalsConcededPerMatch} type="club" showAll={!!showAllMap[t('goalsConceded')]} toggleShowAll={() => handleToggleShowAll(t('goalsConceded'))} />
+              <StatCard title={t('averagePossession')} items={currentStats.teamStats.averagePossession} type="club" showAll={!!showAllMap[t('averagePossession')]} toggleShowAll={() => handleToggleShowAll(t('averagePossession'))} />
             </>
           ) : (
-            <StatCard title={t('teamStats')} items={[]} type="club" />
+            <StatCard title={t('teamStats')} items={[]} type="club" showAll={false} toggleShowAll={() => {}} />
           )}
         </div>
 
         {/* Player Stats */}
         <h2 className="ucl-section-title">{t('playerStats')}</h2>
         <div className="ucl-card-grid">
-          <StatCard title={t('topScorers')} items={currentStats.playerStats?.topScorers || currentStats.topScorers} type="player" />
-          <StatCard title={t('topAssists')} items={currentStats.playerStats?.topAssists || currentStats.topAssists} type="player" />
-          <StatCard title={t('goalsPlusAssists')} items={currentStats.playerStats?.goalsPlusAssists || currentStats.goalsPlusAssists} type="player" />
-          <StatCard title={t('playerRating')} items={currentStats.playerStats?.playerRatings || []} type="player" />
+          <StatCard title={t('topScorers')} items={currentStats.playerStats?.topScorers || currentStats.topScorers} type="player" showAll={!!showAllMap[t('topScorers')]} toggleShowAll={() => handleToggleShowAll(t('topScorers'))} />
+          <StatCard title={t('topAssists')} items={currentStats.playerStats?.topAssists || currentStats.topAssists} type="player" showAll={!!showAllMap[t('topAssists')]} toggleShowAll={() => handleToggleShowAll(t('topAssists'))} />
+          <StatCard title={t('goalsPlusAssists')} items={currentStats.playerStats?.goalsPlusAssists || currentStats.goalsPlusAssists} type="player" showAll={!!showAllMap[t('goalsPlusAssists')]} toggleShowAll={() => handleToggleShowAll(t('goalsPlusAssists'))} />
+          <StatCard title={t('playerRating')} items={currentStats.playerStats?.playerRatings || currentStats.playerRatings || []} type="player" showAll={!!showAllMap[t('playerRating')]} toggleShowAll={() => handleToggleShowAll(t('playerRating'))} />
         </div>
 
         {/* Team of the Season */}
