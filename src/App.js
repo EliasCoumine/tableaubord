@@ -4,7 +4,6 @@ import './i18n';
 import { useTranslation } from 'react-i18next';
 import { seasons, customStats2025, teamOfTheSeason, customStats2024 } from './data';
 import PlayerAnalytics from './PlayerAnalytics';
-import ClubPerformanceChart from './ClubPerformanceChart';
 
 function StatCard({ title, items, type, showAll, toggleShowAll }) {
   const displayCount = showAll ? 10 : 3;
